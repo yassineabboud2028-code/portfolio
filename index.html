@@ -150,6 +150,22 @@ footer{padding-block:28px;border-top:1px solid var(--line);display:flex;justify-
 .in{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
 .d1{animation-delay:.08s}.d2{animation-delay:.16s}.d3{animation-delay:.24s}.d4{animation-delay:.32s}
 
+/* category sections */
+.jump{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px}
+.jump a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:14px;font-weight:600;padding:10px 16px;border-radius:999px;border:1px solid color-mix(in srgb,var(--c) 55%,transparent);color:var(--c);background:color-mix(in srgb,var(--c) 10%,transparent);transition:background .2s}
+.jump a:hover,.jump a:focus-visible{background:color-mix(in srgb,var(--c) 22%,transparent)}
+.jump svg,.cat-head svg{width:18px;height:18px;flex:none}
+.cat{padding:36px 0 44px;border-top:1px solid var(--line);scroll-margin-top:16px}
+.cat-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:24px}
+.cat-icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;color:var(--c);background:color-mix(in srgb,var(--c) 14%,transparent);border:1px solid color-mix(in srgb,var(--c) 40%,transparent);flex:none}
+.cat-icon svg{width:24px;height:24px}
+.cat-head h3{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(26px,3.2vw,36px);letter-spacing:-.02em;line-height:1.05;color:var(--c)}
+.cat-head p{margin:6px 0 0;color:var(--muted);max-width:60ch}
+.cat-head .count{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--c);border:1px solid color-mix(in srgb,var(--c) 40%,transparent);padding:4px 10px;border-radius:999px;white-space:nowrap}
+.card .tag{background:var(--c);color:#0d1315}
+.card{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 30%,transparent)}
+@media (max-width:640px){.cat-head{flex-wrap:wrap}.cat-head .count{margin-left:64px}}
+
 /* results */
 .results{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
 .res{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:2px}
@@ -200,8 +216,8 @@ footer{padding-block:28px;border-top:1px solid var(--line);display:flex;justify-
   <div class="hero">
     <div>
       <div class="eyebrow in"><span class="dot" aria-hidden="true"></span><span class="mono">Videographer · Photographer · Video Editor</span></div>
-      <h1 class="in d1">Short-form video that <em>holds attention.</em></h1>
-      <p class="lede in d2">I plan, shoot, edit and grade social-first video, from the first frame to the final export. <b>10 years</b> of freelance work for lounges, cafés, gyms and villas, plus my own TikTok channels with <b>761K+ followers</b>. Based in Gabès, Tunisia and <b>ready to relocate to the UAE, Qatar or Saudi Arabia</b>, or to work remotely.</p>
+      <h1 class="in d1">Videos that <em>bring results.</em></h1>
+      <p class="lede in d2">Videographer &amp; video editor for <b>gyms, real estate, hospitality and events</b>. 10 years of experience. Ready to relocate to <b>UAE · Qatar · Saudi Arabia</b> or work remotely.</p>
       <div class="cta in d3">
         <a class="btn primary" href="#work">Watch the work</a>
         <a class="btn" href="Yassine_Abboud_CV.pdf" download>Download CV</a>
@@ -225,12 +241,10 @@ footer{padding-block:28px;border-top:1px solid var(--line);display:flex;justify-
 
 <section id="work">
   <div class="wrap">
-    <div class="sec-head">
-      <div><span class="mono" id="workCount">Selected work</span><h2>The work</h2></div>
-      <div class="filters" role="group" aria-label="Filter by category" id="filters"></div>
-    </div>
-    <div class="grid" id="grid"></div>
-    <p class="mono" style="margin-top:18px">Hover to preview · Click to watch with sound</p>
+    <div class="sec-head"><div><span class="mono" id="workCount">Selected work</span><h2>The work</h2></div></div>
+    <nav class="jump" id="jump" aria-label="Work categories"></nav>
+    <div id="cats"></div>
+    <p class="mono" style="margin-top:8px">Hover to preview · Click to watch with sound</p>
   </div>
 </section>
 
@@ -311,53 +325,64 @@ footer{padding-block:28px;border-top:1px solid var(--line);display:flex;justify-
 </div>
 
 <script>
+const ICON={
+ gym:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 7v10M18 7v10M3 9v6M21 9v6M6 12h12"/></svg>',
+ space:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11"/><path d="M10 21v-5h4v5"/></svg>',
+ event:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="m12 13 1 2 2 .3-1.5 1.4.4 2.1-1.9-1-1.9 1 .4-2.1L9 15.3l2-.3z"/></svg>',
+ film:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 9h4M3 15h4M17 9h4M17 15h4"/></svg>'
+};
+const CATS=[
+ {k:"gym",name:"Gym & Fitness",tag:"Gym",c:"#ff5a5f",icon:"gym",desc:"Promo reels and facility tours for gyms and fitness classes."},
+ {k:"space",name:"Real Estate & Hospitality",tag:"Real Estate",c:"#4cc3e0",icon:"space",desc:"Tours of villas, chalets, lounges and cafés that make people want to visit."},
+ {k:"event",name:"Events",tag:"Event",c:"#f5b14c",icon:"event",desc:"Fast, energetic coverage of bootcamps, classes and live events."},
+ {k:"film",name:"Cinematic Stories",tag:"Cinematic",c:"#a78bfa",icon:"film",desc:"Self-shot short stories with mood, color grading and subtle captions."}
+];
 const CLIPS=[
- {id:"v15",cat:"Hospitality",t:"Hospitality: The Sun Lounge",d:"Beach lounge in Gabès: pool, terrace, interiors and the bar at work. 47.7K views on Instagram.",s:29,v:"47.7K views"},
- {id:"v16",cat:"Hospitality",t:"Hospitality: The 55 Coffee Shop",d:"Café showcase: neon details, warm interiors and a branded end card. 19K views on Instagram.",s:24,v:"19K views"},
- {id:"v14",cat:"Space Tours",t:"Space Tour: Platinum Gym",d:"Moody tour of Platinum Gym, from the logo reception to the training floor. 9.5K views on Instagram.",s:28,v:"9.5K views"},
- {id:"v05",cat:"Event Shots",t:"Event Shot: Night Bootcamp",d:"Large outdoor night event for Platinum Gym, cut fast with split-screen energy.",s:56},
- {id:"v08",cat:"Event Shots",t:"Event Shot: Sunset Bootcamp",d:"Outdoor group training shot at golden hour, with split-screen moments.",s:22},
- {id:"v07",cat:"Event Shots",t:"Event Shot: Kobudo Masterclass",d:"Traditional Okinawan Kobudo session at Platinum Gym with motion effects and titles.",s:51},
- {id:"v04",cat:"Gym Edit",t:"Gym Edit: Hyrox Class",d:"Functional training class: whiteboard, workout and community in one fast reel.",s:52},
- {id:"v03",cat:"Gym Edit",t:"Gym Edit: Dark Grade",d:"Kinetic captions synced to the beat over a dark, moody gym grade.",s:14},
- {id:"v12",cat:"Gym Edit",t:"Gym Edit: Motivation",d:"Motivational gym reel built on bold murals, slow pushes and hook captions.",s:18},
- {id:"v11",cat:"Space Tours",t:"Space Tour: Oasis Villa",d:"A walk through a palm-garden villa in Gabès: pool, garden and stone interiors.",s:27},
- {id:"v13",cat:"Space Tours",t:"Space Tour: Casa de Madera",d:"Chalet showcase: pool, signage, wooden interiors and a sunset closing shot.",s:51},
- {id:"v06",cat:"Space Tours",t:"Space Tour: Gym Facility",d:"Entrance-to-floor tour of a gym, highlighting equipment and branding details.",s:77},
- {id:"v09",cat:"Cinematic",t:"Cinematic: Rainy Day in Gabès",d:"Self-shot motivational story: blue-hour grade, subtle captions, night street light.",s:26}
+ {id:"v14",cat:"gym",t:"Platinum Gym · Tour",d:"Moody tour of Platinum Gym, from the logo reception to the training floor. 9.5K views on Instagram.",s:28,v:"9.5K views"},
+ {id:"v04",cat:"gym",t:"Hyrox Class",d:"Functional training class: whiteboard, workout and community in one fast reel.",s:52},
+ {id:"v12",cat:"gym",t:"Gym Motivation",d:"Motivational gym reel built on bold murals, slow pushes and hook captions.",s:18},
+ {id:"v06",cat:"gym",t:"Gym Facility Tour",d:"Entrance-to-floor tour of a gym, highlighting equipment and branding details.",s:77},
+ {id:"v15",cat:"space",t:"The Sun Lounge",d:"Beach lounge in Gabès: pool, terrace, interiors and the bar at work. 47.7K views on Instagram.",s:29,v:"47.7K views"},
+ {id:"v16",cat:"space",t:"The 55 Coffee Shop",d:"Café showcase: neon details, warm interiors and a branded end card. 19K views on Instagram.",s:24,v:"19K views"},
+ {id:"v11",cat:"space",t:"Oasis Villa",d:"A walk through a palm-garden villa in Gabès: pool, garden and stone interiors.",s:27},
+ {id:"v13",cat:"space",t:"Casa de Madera Chalet",d:"Chalet showcase: pool, signage, wooden interiors and a sunset closing shot.",s:51},
+ {id:"v05",cat:"event",t:"Night Bootcamp",d:"Large outdoor night event for Platinum Gym, cut fast with split-screen energy.",s:56},
+ {id:"v08",cat:"event",t:"Sunset Bootcamp",d:"Outdoor group training shot at golden hour, with split-screen moments.",s:22},
+ {id:"v07",cat:"event",t:"Kobudo Masterclass",d:"Traditional Okinawan Kobudo session at Platinum Gym with motion effects and titles.",s:51},
+ {id:"v09",cat:"film",t:"Rainy Day in Gabès",d:"Self-shot motivational story: blue-hour grade, subtle captions, night street light.",s:26}
 ];
 const tc=s=>{const m=Math.floor(s/60),x=s%60;return `00:${String(m).padStart(2,"0")}:${String(x).padStart(2,"0")}`};
-const grid=document.getElementById("grid"),filters=document.getElementById("filters");
-document.getElementById("workCount").textContent=`Selected work · ${CLIPS.length} projects`;
-const cats=["All",...new Set(CLIPS.map(c=>c.cat))];
-cats.forEach((c,i)=>{const b=document.createElement("button");b.className="chip";b.type="button";b.dataset.cat=c;b.setAttribute("aria-pressed",i===0);
-  const n=c==="All"?CLIPS.length:CLIPS.filter(x=>x.cat===c).length;b.innerHTML=`${c}<small>${n}</small>`;filters.appendChild(b)});
-CLIPS.forEach((c,i)=>{
-  const el=document.createElement("button");el.type="button";el.className="card";el.dataset.cat=c.cat;el.dataset.i=i;
-  el.setAttribute("aria-label",`Play ${c.t}`);
-  el.innerHTML=`<img src="media/${c.id}.jpg" alt="" loading="lazy"><video muted loop playsinline preload="none" data-src="media/${c.id}.mp4"></video>
-  <span class="tag">${c.cat}</span><span class="tc">${tc(c.s)}</span>
-  <span class="meta">${c.v?`<span class="views">${c.v}</span>`:""}<h3>${c.t}</h3><span class="mono">9:16 · ${c.s}s</span></span>`;
-  const v=el.querySelector("video");
-  const start=()=>{if(!v.src)v.src=v.dataset.src;v.currentTime=0;v.play().then(()=>el.classList.add("playing")).catch(()=>{})};
-  const stop=()=>{el.classList.remove("playing");v.pause()};
-  el.addEventListener("mouseenter",start);el.addEventListener("mouseleave",stop);
-  el.addEventListener("focus",start);el.addEventListener("blur",stop);
-  el.addEventListener("click",()=>{stop();openLB(i)});
-  grid.appendChild(el);
+const catOf=k=>CATS.find(c=>c.k===k);
+document.getElementById("workCount").textContent=`Selected work · ${CLIPS.length} projects · ${CATS.length} categories`;
+const jump=document.getElementById("jump"),catsEl=document.getElementById("cats");
+CATS.forEach(cat=>{
+  const items=CLIPS.map((c,i)=>({...c,i})).filter(c=>c.cat===cat.k);
+  const a=document.createElement("a");a.href=`#cat-${cat.k}`;a.style.setProperty("--c",cat.c);a.innerHTML=`${ICON[cat.icon]}${cat.name}`;jump.appendChild(a);
+  const sec=document.createElement("div");sec.className="cat";sec.id=`cat-${cat.k}`;sec.style.setProperty("--c",cat.c);
+  sec.innerHTML=`<div class="cat-head"><span class="cat-icon" aria-hidden="true">${ICON[cat.icon]}</span><div><h3>${cat.name}</h3><p>${cat.desc}</p></div><span class="count">${items.length} ${items.length>1?"videos":"video"}</span></div><div class="grid"></div>`;
+  const g=sec.querySelector(".grid");
+  items.forEach(c=>{
+    const el=document.createElement("button");el.type="button";el.className="card";el.dataset.i=c.i;
+    el.setAttribute("aria-label",`Play ${c.t}`);
+    el.innerHTML=`<img src="media/${c.id}.jpg" alt="" loading="lazy"><video muted loop playsinline preload="none" data-src="media/${c.id}.mp4"></video>
+    <span class="tag">${cat.tag}</span><span class="tc">${tc(c.s)}</span>
+    <span class="meta">${c.v?`<span class="views">${c.v}</span>`:""}<h3>${c.t}</h3><span class="mono">9:16 · ${c.s}s</span></span>`;
+    const v=el.querySelector("video");
+    const start=()=>{if(!v.src)v.src=v.dataset.src;v.currentTime=0;v.play().then(()=>el.classList.add("playing")).catch(()=>{})};
+    const stop=()=>{el.classList.remove("playing");v.pause()};
+    el.addEventListener("mouseenter",start);el.addEventListener("mouseleave",stop);
+    el.addEventListener("focus",start);el.addEventListener("blur",stop);
+    el.addEventListener("click",()=>{stop();openLB(c.i)});
+    g.appendChild(el);
+  });
+  catsEl.appendChild(sec);
 });
-filters.addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;
-  filters.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b));
-  let k=0;grid.querySelectorAll(".card").forEach(card=>{const show=b.dataset.cat==="All"||card.dataset.cat===b.dataset.cat;
-    card.classList.toggle("hide",!show);card.classList.remove("enter");
-    if(show){void card.offsetWidth;card.style.animationDelay=(k++*45)+"ms";card.classList.add("enter")}})});
-
 
 /* lightbox */
 const lb=document.getElementById("lb"),lbV=document.getElementById("lbVideo");let cur=0,lastFocus=null;
-function visible(){return [...grid.querySelectorAll(".card:not(.hide)")].map(c=>+c.dataset.i)}
+function visible(){const k=CLIPS[cur].cat;return CLIPS.map((c,i)=>i).filter(i=>CLIPS[i].cat===k)}
 function show(i){cur=i;const c=CLIPS[i];lbV.src=`media/${c.id}.mp4`;lbV.poster=`media/${c.id}.jpg`;
-  document.getElementById("lbCat").textContent=`${c.cat} · ${tc(c.s)}`;document.getElementById("lbTitle").textContent=c.t;
+  const lc=document.getElementById("lbCat");lc.textContent=`${catOf(c.cat).name} · ${tc(c.s)}`;lc.style.color=catOf(c.cat).c;document.getElementById("lbTitle").textContent=c.t;
   document.getElementById("lbDesc").textContent=c.d;lbV.play().catch(()=>{})}
 function openLB(i){lastFocus=document.activeElement;lb.hidden=false;requestAnimationFrame(()=>lb.classList.add("open"));show(i);document.getElementById("lbClose").focus()}
 function closeLB(){lb.classList.remove("open");lbV.pause();setTimeout(()=>{lb.hidden=true;lbV.removeAttribute("src");lbV.load()},250);lastFocus&&lastFocus.focus()}
