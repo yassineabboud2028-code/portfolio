@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Yassine Abboud Reel</title>
-<meta name="description" content="Yassine Abboud: videographer and video editor for events, gyms, real estate and short-form social video. Open to roles in Dubai, UAE and the Gulf.">
-<meta name="keywords" content="videographer Dubai, video editor UAE, short-form video editor, content creator, event videographer, real estate videographer, Reels editor, TikTok editor, Premiere Pro, CapCut">
+<title>Yassine Abboud · Videographer &amp; Video Editor · Portfolio</title>
+<meta name="description" content="Yassine Abboud: videographer and video editor for hospitality, gyms, real estate and short-form social video. 761K+ TikTok followers. Open to roles in the UAE, Qatar and Saudi Arabia, on-site or remote.">
+<meta name="keywords" content="videographer Dubai, video editor UAE, short-form video editor, content creator, event videographer, real estate videographer, Reels editor, TikTok editor, Premiere Pro, DaVinci Resolve, hospitality videographer, Qatar, Saudi Arabia">
 <meta property="og:title" content="Yassine Abboud · Videographer & Video Editor">
-<meta property="og:description" content="Event shots, gym edits, space tours and cinematic short-form video.">
-<meta property="og:image" content="media/showreel.jpg">
+<meta property="og:description" content="Hospitality, gym and real estate reels with real results: 80K+ views for clients, 761K+ TikTok followers.">
+<meta property="og:image" content="https://yassineabboud2028-code.github.io/portfolio/media/showreel.jpg">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -150,6 +150,20 @@ footer{padding-block:28px;border-top:1px solid var(--line);display:flex;justify-
 .in{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
 .d1{animation-delay:.08s}.d2{animation-delay:.16s}.d3{animation-delay:.24s}.d4{animation-delay:.32s}
 
+/* results */
+.results{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.res{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:2px}
+.res strong{font-family:var(--display);font-weight:800;font-size:clamp(40px,4.4vw,56px);line-height:1;letter-spacing:-.03em;margin-top:14px;font-variant-numeric:tabular-nums}
+.res>span:not(.mono){color:var(--muted);font-size:14px}
+.res p{margin:12px 0 0;font-size:14px;color:var(--paper)}
+.res.big strong{color:var(--sun)}
+.res.wide{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:6px 18px}
+.res.wide strong{margin-top:0}
+.res.wide .mono{width:100%}
+.res.wide p{margin:0}
+.views{font-family:var(--mono);font-size:10.5px;color:#1a0f05;background:var(--paper);padding:3px 7px;border-radius:6px;align-self:flex-start;margin-bottom:4px}
+@media (max-width:980px){.results{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
 @media (max-width:980px){
   .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .hero{grid-template-columns:1fr;gap:40px;padding-block:44px 56px}
@@ -179,7 +193,7 @@ footer{padding-block:28px;border-top:1px solid var(--line);display:flex;justify-
   <header class="top">
     <div class="brand">Yassine Abboud<span>.</span></div>
     <nav aria-label="Sections">
-      <a href="#work">Work</a><a href="#about">About</a><a href="#services">Services</a><a href="#contact">Contact</a>
+      <a href="#work">Work</a><a href="#results">Results</a><a href="#about">About</a><a href="#services">Services</a><a href="#contact">Contact</a>
     </nav>
   </header>
 
@@ -187,15 +201,16 @@ footer{padding-block:28px;border-top:1px solid var(--line);display:flex;justify-
     <div>
       <div class="eyebrow in"><span class="dot" aria-hidden="true"></span><span class="mono">Videographer · Photographer · Video Editor</span></div>
       <h1 class="in d1">Short-form video that <em>holds attention.</em></h1>
-      <p class="lede in d2">I plan, shoot, edit and grade social-first video, from the first frame to the final export. <b>10 years</b> of freelance work: event shots, gym edits, space tours and cinematic stories. Based in Gabès, Tunisia and <b>ready to relocate to Dubai, the UAE and the Gulf.</b></p>
+      <p class="lede in d2">I plan, shoot, edit and grade social-first video, from the first frame to the final export. <b>10 years</b> of freelance work for lounges, cafés, gyms and villas, plus my own TikTok channels with <b>761K+ followers</b>. Based in Gabès, Tunisia and <b>ready to relocate to the UAE, Qatar or Saudi Arabia</b>, or to work remotely.</p>
       <div class="cta in d3">
         <a class="btn primary" href="#work">Watch the work</a>
+        <a class="btn" href="Yassine_Abboud_CV.pdf" download>Download CV</a>
         <a class="btn" href="#contact">Hire me</a>
       </div>
       <div class="specs in d4">
         <div><strong>10 yrs</strong><span class="mono">Freelance</span></div>
-        <div><strong>9:16</strong><span class="mono">Social-first</span></div>
-        <div><strong>4K</strong><span class="mono">Capture</span></div>
+        <div><strong>761K+</strong><span class="mono">TikTok followers</span></div>
+        <div><strong>80K+</strong><span class="mono">Views for clients</span></div>
         <div><strong>AR · FR · EN</strong><span class="mono">Languages</span></div>
       </div>
     </div>
@@ -211,11 +226,24 @@ footer{padding-block:28px;border-top:1px solid var(--line);display:flex;justify-
 <section id="work">
   <div class="wrap">
     <div class="sec-head">
-      <div><span class="mono">Selected work · 10 projects</span><h2>The work</h2></div>
+      <div><span class="mono" id="workCount">Selected work</span><h2>The work</h2></div>
       <div class="filters" role="group" aria-label="Filter by category" id="filters"></div>
     </div>
     <div class="grid" id="grid"></div>
     <p class="mono" style="margin-top:18px">Hover to preview · Click to watch with sound</p>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="mono">Instagram Insights · collab posts with each client</span><h2>Results</h2></div></div>
+    <div class="results">
+      <div class="res big"><span class="mono">The Sun Lounge · Gabès</span><strong>47.7K</strong><span>views</span><p>1,673 likes · 1,412 shares</p></div>
+      <div class="res"><span class="mono">The 55 Coffee Shop</span><strong>19K</strong><span>views</span><p>796 likes · 705 shares</p></div>
+      <div class="res"><span class="mono">Platinum Gym</span><strong>9.5K</strong><span>views</span><p>182 likes · 27 shares</p></div>
+      <div class="res"><span class="mono">Power Box Fitness · opening</span><strong>5.5K</strong><span>views</span><p>78 likes · 77 shares</p></div>
+      <div class="res wide"><span class="mono">My own TikTok channels</span><strong>761K+</strong><span>followers</span><p>@think_again___ 542K · @doug_bucks 219K</p></div>
+    </div>
   </div>
 </section>
 
@@ -226,12 +254,13 @@ footer{padding-block:28px;border-top:1px solid var(--line);display:flex;justify-
       <div class="about">
         <span class="mono">About</span>
         <p><b>I handle the whole production chain myself.</b> Concept, lighting and composition on set, then cut, pacing, color, captions, sound design and music in the edit.</p>
-        <p>I run two TikTok channels where I test hooks and read retention data, and I bring what I learn there into every client video.</p>
+        <p>I run two TikTok channels, <b>@think_again___ (542K)</b> and <b>@doug_bucks (219K)</b>, where I test hooks and read retention data. I bring what I learn there into every client video.</p>
         <dl class="kit">
           <dt>Cameras</dt><dd>Nikon · Canon · Sony</dd>
-          <dt>Edit</dt><dd>Adobe Premiere Pro · CapCut Pro</dd>
+          <dt>Edit</dt><dd>Adobe Premiere Pro · DaVinci Resolve</dd>
           <dt>Photo</dt><dd>Adobe Photoshop</dd>
-          <dt>Workflow</dt><dd>Gimbal · AI-assisted scripting</dd>
+          <dt>Workflow</dt><dd>Gimbal · Claude Code automation</dd>
+          <dt>Languages</dt><dd>Arabic (native) · French · English</dd>
         </dl>
       </div>
     </div>
@@ -242,7 +271,7 @@ footer{padding-block:28px;border-top:1px solid var(--line);display:flex;justify-
   <div class="wrap">
     <div class="sec-head"><div><span class="mono">What I deliver</span><h2>Services</h2></div></div>
     <div class="services">
-      <div class="svc"><span class="mono">Shoot</span><h3>Videography &amp; photo</h3><p>Brand content, events, gyms, villas and hospitality. Lighting, framing and stable gimbal movement in 4K.</p></div>
+      <div class="svc"><span class="mono">Shoot</span><h3>Videography &amp; photo</h3><p>Lounges, cafés, gyms, villas and events. Lighting, framing and smooth gimbal movement.</p></div>
       <div class="svc"><span class="mono">Edit</span><h3>Short-form editing</h3><p>Reels, TikToks and Shorts built on strong hooks, fast pacing, kinetic captions, color grading and sound design.</p></div>
       <div class="svc"><span class="mono">Grow</span><h3>Content strategy</h3><p>Publishing schedule, hook testing and reading retention and engagement data to improve every next video.</p></div>
     </div>
@@ -252,13 +281,15 @@ footer{padding-block:28px;border-top:1px solid var(--line);display:flex;justify-
 <section id="contact">
   <div class="wrap slate">
     <div>
-      <span class="mono">Available now · Remote or on-site in the Gulf</span>
+      <span class="mono">Available now · On-site in the UAE, Qatar or Saudi Arabia, or remote</span>
       <h2>Let's make something people watch to the end.</h2>
     </div>
     <div class="lines">
-      <div class="line"><span class="mono">Email</span><span class="val">yassineabboud2028@gmail.com</span><button class="copy" type="button" data-copy="yassineabboud2028@gmail.com">Copy</button></div>
+      <div class="line"><span class="mono">Email</span><span class="val"><a href="mailto:yassinela330@gmail.com">yassinela330@gmail.com</a></span><button class="copy" type="button" data-copy="yassinela330@gmail.com">Copy</button></div>
       <div class="line"><span class="mono">Phone / WhatsApp</span><span class="val">+216 26 361 897</span><button class="copy" type="button" data-copy="+216 26 361 897">Copy</button></div>
       <div class="line"><span class="mono">TikTok</span><span class="val"><a href="https://www.tiktok.com/@doug_bucks" target="_blank" rel="noopener">@doug_bucks</a> · <a href="https://www.tiktok.com/@think_again___" target="_blank" rel="noopener">@think_again___</a></span></div>
+      <div class="line"><span class="mono">Instagram</span><span class="val"><a href="https://www.instagram.com/yassine__abboud/" target="_blank" rel="noopener">@yassine__abboud</a></span></div>
+      <div class="line"><span class="mono">CV</span><span class="val"><a href="Yassine_Abboud_CV.pdf" download>Download PDF</a></span></div>
       <div class="line"><span class="mono">LinkedIn</span><span class="val"><a href="https://www.linkedin.com/in/yassine-abboud-b1041144a/" target="_blank" rel="noopener">yassine-abboud</a></span></div>
     </div>
   </div>
@@ -281,6 +312,9 @@ footer{padding-block:28px;border-top:1px solid var(--line);display:flex;justify-
 
 <script>
 const CLIPS=[
+ {id:"v15",cat:"Hospitality",t:"Hospitality: The Sun Lounge",d:"Beach lounge in Gabès: pool, terrace, interiors and the bar at work. 47.7K views on Instagram.",s:29,v:"47.7K views"},
+ {id:"v16",cat:"Hospitality",t:"Hospitality: The 55 Coffee Shop",d:"Café showcase: neon details, warm interiors and a branded end card. 19K views on Instagram.",s:24,v:"19K views"},
+ {id:"v14",cat:"Space Tours",t:"Space Tour: Platinum Gym",d:"Moody tour of Platinum Gym, from the logo reception to the training floor. 9.5K views on Instagram.",s:28,v:"9.5K views"},
  {id:"v05",cat:"Event Shots",t:"Event Shot: Night Bootcamp",d:"Large outdoor night event for Platinum Gym, cut fast with split-screen energy.",s:56},
  {id:"v08",cat:"Event Shots",t:"Event Shot: Sunset Bootcamp",d:"Outdoor group training shot at golden hour, with split-screen moments.",s:22},
  {id:"v07",cat:"Event Shots",t:"Event Shot: Kobudo Masterclass",d:"Traditional Okinawan Kobudo session at Platinum Gym with motion effects and titles.",s:51},
@@ -294,6 +328,7 @@ const CLIPS=[
 ];
 const tc=s=>{const m=Math.floor(s/60),x=s%60;return `00:${String(m).padStart(2,"0")}:${String(x).padStart(2,"0")}`};
 const grid=document.getElementById("grid"),filters=document.getElementById("filters");
+document.getElementById("workCount").textContent=`Selected work · ${CLIPS.length} projects`;
 const cats=["All",...new Set(CLIPS.map(c=>c.cat))];
 cats.forEach((c,i)=>{const b=document.createElement("button");b.className="chip";b.type="button";b.dataset.cat=c;b.setAttribute("aria-pressed",i===0);
   const n=c==="All"?CLIPS.length:CLIPS.filter(x=>x.cat===c).length;b.innerHTML=`${c}<small>${n}</small>`;filters.appendChild(b)});
@@ -302,7 +337,7 @@ CLIPS.forEach((c,i)=>{
   el.setAttribute("aria-label",`Play ${c.t}`);
   el.innerHTML=`<img src="media/${c.id}.jpg" alt="" loading="lazy"><video muted loop playsinline preload="none" data-src="media/${c.id}.mp4"></video>
   <span class="tag">${c.cat}</span><span class="tc">${tc(c.s)}</span>
-  <span class="meta"><h3>${c.t}</h3><span class="mono">9:16 · ${c.s}s</span></span>`;
+  <span class="meta">${c.v?`<span class="views">${c.v}</span>`:""}<h3>${c.t}</h3><span class="mono">9:16 · ${c.s}s</span></span>`;
   const v=el.querySelector("video");
   const start=()=>{if(!v.src)v.src=v.dataset.src;v.currentTime=0;v.play().then(()=>el.classList.add("playing")).catch(()=>{})};
   const stop=()=>{el.classList.remove("playing");v.pause()};
