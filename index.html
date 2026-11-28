@@ -8,7 +8,7 @@
 <meta name="keywords" content="videographer Dubai, video editor UAE, short-form video editor, content creator, event videographer, real estate videographer, Reels editor, TikTok editor, Claude Code, Premiere Pro, DaVinci Resolve, Photoshop, CapCut, hospitality videographer, Qatar, Saudi Arabia">
 <meta property="og:title" content="Yassine Abboud · Real Estate Videographer & Video Editor">
 <meta property="og:description" content="Real estate and hospitality walkthrough reels with real results: 47.7K views on a top reel, 80K+ views for clients.">
-<meta property="og:image" content="https://yassineabboud2028-code.github.io/portfolio/media/v11.jpg">
+<meta property="og:image" content="https://yassineabboud2028-code.github.io/portfolio/media/v13.jpg">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -237,7 +237,7 @@ footer{padding-block:28px;border-top:1px solid var(--line);display:flex;justify-
 
     <div class="reelcol">
     <div class="monitor in d2" id="monitor" role="button" tabindex="0" aria-label="Real estate showreel. Click to watch with sound">
-      <video id="reel" src="media/v11.mp4" poster="media/v11.jpg" autoplay muted playsinline preload="auto"></video>
+      <video id="reel" src="media/v13.mp4" poster="media/v13.jpg" autoplay muted playsinline preload="auto"></video>
     </div>
     <div class="reelnav" id="reelnav" aria-label="Real estate showreel clips"></div>
     <p class="mono" id="reelcap"></p>
@@ -348,8 +348,8 @@ const CLIPS=[
  {id:"v04",cat:"gym",t:"Hyrox Class",d:"Functional training class: whiteboard, workout and community in one fast reel.",s:52},
  {id:"v12",cat:"gym",t:"Gym Motivation",d:"Motivational gym reel built on bold murals, slow pushes and hook captions.",s:18},
  {id:"v06",cat:"gym",t:"Gym Facility Tour",d:"Entrance-to-floor tour of a gym, highlighting equipment and branding details.",s:77},
- {id:"v11",cat:"space",t:"Oasis Villa",d:"A walk through a palm-garden villa in Gabès: pool, garden and stone interiors.",s:27},
  {id:"v13",cat:"space",t:"Casa de Madera Chalet",d:"Chalet showcase: pool, signage, wooden interiors and a sunset closing shot.",s:51},
+ {id:"v11",cat:"space",t:"Oasis Villa",d:"A walk through a palm-garden villa in Gabès: pool, garden and stone interiors.",s:27},
  {id:"v15",cat:"space",t:"The Sun Lounge",d:"Beach lounge in Gabès: pool, terrace, interiors and the bar at work. 47.7K views on Instagram.",s:29,v:"47.7K views"},
  {id:"v16",cat:"space",t:"The 55 Coffee Shop",d:"Café showcase: neon details, warm interiors and a branded end card. 19K views on Instagram.",s:24,v:"19K views"},
  {id:"v05",cat:"event",t:"Night Bootcamp",d:"Large outdoor night event for Platinum Gym, cut fast with split-screen energy.",s:56},
@@ -385,10 +385,10 @@ CATS.forEach(cat=>{
 });
 
 /* hero: real estate clips play in turn */
-const HERO=["v11","v13","v15","v16"],reel=document.getElementById("reel"),reelnav=document.getElementById("reelnav"),reelcap=document.getElementById("reelcap");let hi=0;
+const HERO=["v13","v11","v15","v16"],reel=document.getElementById("reel"),reelnav=document.getElementById("reelnav"),reelcap=document.getElementById("reelcap");let hi=0;
 function heroSet(n,play=true){hi=n;const c=CLIPS.find(x=>x.id===HERO[n]);reel.src=`media/${c.id}.mp4`;reel.poster=`media/${c.id}.jpg`;
   reelcap.textContent=`${c.t}${c.v?" · "+c.v:""}`;[...reelnav.children].forEach((b,j)=>b.setAttribute("aria-pressed",j===n));if(play)reel.play().catch(()=>{})}
-HERO.forEach((id,n)=>{const c=CLIPS.find(x=>x.id===id);const b=document.createElement("button");b.type="button";b.className="chip";b.textContent={v11:"Oasis Villa",v13:"Chalet",v15:"Sun Lounge",v16:"55 Café"}[id];b.onclick=()=>heroSet(n);reelnav.appendChild(b)});
+HERO.forEach((id,n)=>{const c=CLIPS.find(x=>x.id===id);const b=document.createElement("button");b.type="button";b.className="chip";b.textContent={v13:"Chalet",v11:"Oasis Villa",v15:"Sun Lounge",v16:"55 Café"}[id];b.onclick=()=>heroSet(n);reelnav.appendChild(b)});
 reel.addEventListener("ended",()=>heroSet((hi+1)%HERO.length));
 const openHero=()=>{reel.pause();openLB(CLIPS.findIndex(x=>x.id===HERO[hi]))};
 document.getElementById("monitor").addEventListener("click",openHero);
