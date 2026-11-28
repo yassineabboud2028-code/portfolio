@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Yassine Abboud · Videographer &amp; Video Editor · Portfolio</title>
-<meta name="description" content="Yassine Abboud: videographer and video editor for hospitality, gyms, real estate and short-form social video. 761K+ TikTok followers. Open to roles in the UAE, Qatar and Saudi Arabia, on-site or remote.">
+<title>Yassine Abboud · Real Estate Videographer &amp; Video Editor · Portfolio</title>
+<meta name="description" content="Yassine Abboud: real estate and hospitality videographer, photographer and video editor. Cinematic property walkthroughs for Instagram and TikTok, 47.7K views on a top reel, 761K+ TikTok followers. Open to roles in the UAE, Qatar and Saudi Arabia, on-site or remote.">
 <meta name="keywords" content="videographer Dubai, video editor UAE, short-form video editor, content creator, event videographer, real estate videographer, Reels editor, TikTok editor, Claude Code, Premiere Pro, DaVinci Resolve, Photoshop, CapCut, hospitality videographer, Qatar, Saudi Arabia">
-<meta property="og:title" content="Yassine Abboud · Videographer & Video Editor">
-<meta property="og:description" content="Hospitality, gym and real estate reels with real results: 80K+ views for clients, 761K+ TikTok followers.">
-<meta property="og:image" content="https://yassineabboud2028-code.github.io/portfolio/media/showreel.jpg">
+<meta property="og:title" content="Yassine Abboud · Real Estate Videographer & Video Editor">
+<meta property="og:description" content="Real estate and hospitality walkthrough reels with real results: 47.7K views on a top reel, 80K+ views for clients.">
+<meta property="og:image" content="https://yassineabboud2028-code.github.io/portfolio/media/v15.jpg">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,6 +74,10 @@ h1 em{font-style:normal;color:var(--sun)}
 .reelcol{display:flex;flex-direction:column;align-items:center;gap:14px}
 .music{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;max-width:360px}
 .music .mono{width:100%;text-align:center}
+.monitor{cursor:pointer}
+.reelnav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:360px}
+.reelnav .chip{padding:7px 12px;font-size:13px}
+#reelcap{text-align:center;max-width:360px;margin:0}
 .unmute{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);pointer-events:auto;background:rgba(13,19,21,.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.08em;padding:8px 14px;border-radius:999px;cursor:pointer}
 
 /* sections */
@@ -215,33 +219,35 @@ footer{padding-block:28px;border-top:1px solid var(--line);display:flex;justify-
 
   <div class="hero">
     <div>
-      <div class="eyebrow in"><span class="dot" aria-hidden="true"></span><span class="mono">Videographer · Photographer · Video Editor</span></div>
-      <h1 class="in d1">Videos that <em>bring results.</em></h1>
-      <p class="lede in d2">Videographer &amp; video editor for <b>gyms, real estate, hospitality and events</b>. 10 years of experience. Ready to relocate to <b>UAE · Qatar · Saudi Arabia</b> or work remotely.</p>
+      <div class="eyebrow in"><span class="dot" aria-hidden="true"></span><span class="mono">Real Estate Videographer · Photographer · Video Editor</span></div>
+      <h1 class="in d1">Real estate videos that <em>bring results.</em></h1>
+      <p class="lede in d2">Cinematic walkthroughs of <b>villas, chalets, lounges and cafés</b>, shot and edited for Instagram and TikTok. Also gyms and events. 10 years of experience. Ready to relocate to <b>UAE · Qatar · Saudi Arabia</b> or work remotely.</p>
       <div class="cta in d3">
-        <a class="btn primary" href="#work">Watch the work</a>
+        <a class="btn primary" href="#cat-space">Watch real estate work</a>
         <a class="btn" href="Yassine_Abboud_CV.pdf" download>Download CV</a>
         <a class="btn" href="#contact">Hire me</a>
       </div>
       <div class="specs in d4">
-        <div><strong>10 yrs</strong><span class="mono">Freelance</span></div>
-        <div><strong>761K+</strong><span class="mono">TikTok followers</span></div>
+        <div><strong>10 yrs</strong><span class="mono">Experience</span></div>
+        <div><strong>47.7K</strong><span class="mono">Top property reel</span></div>
         <div><strong>80K+</strong><span class="mono">Views for clients</span></div>
-        <div><strong>AR · FR · EN</strong><span class="mono">Languages</span></div>
+        <div><strong>761K+</strong><span class="mono">TikTok followers</span></div>
       </div>
     </div>
 
     <div class="reelcol">
-    <div class="monitor in d2" aria-label="Showreel">
-      <video id="reel" src="media/showreel_silent.mp4" poster="media/showreel.jpg" autoplay muted loop playsinline preload="auto"></video>
+    <div class="monitor in d2" id="monitor" role="button" tabindex="0" aria-label="Real estate showreel. Click to watch with sound">
+      <video id="reel" src="media/v15.mp4" poster="media/v15.jpg" autoplay muted playsinline preload="auto"></video>
     </div>
+    <div class="reelnav" id="reelnav" aria-label="Real estate showreel clips"></div>
+    <p class="mono" id="reelcap"></p>
     </div>
   </div>
 </div>
 
 <section id="work">
   <div class="wrap">
-    <div class="sec-head"><div><span class="mono" id="workCount">Selected work</span><h2>The work</h2></div></div>
+    <div class="sec-head"><div><span class="mono" id="workCount">Selected work</span><h2>Featured work</h2></div></div>
     <nav class="jump" id="jump" aria-label="Work categories"></nav>
     <div id="cats"></div>
     <p class="mono" style="margin-top:8px">Hover to preview · Click to watch with sound</p>
@@ -285,7 +291,7 @@ footer{padding-block:28px;border-top:1px solid var(--line);display:flex;justify-
   <div class="wrap">
     <div class="sec-head"><div><span class="mono">What I deliver</span><h2>Services</h2></div></div>
     <div class="services">
-      <div class="svc"><span class="mono">Shoot</span><h3>Videography &amp; photo</h3><p>Lounges, cafés, gyms, villas and events. Lighting, framing and smooth gimbal movement.</p></div>
+      <div class="svc"><span class="mono">Real estate</span><h3>Property video &amp; photo</h3><p>Walkthrough videos and photo sets for villas, chalets, guesthouses, lounges and cafés: interiors, pools, gardens and sunset exteriors, shot with smooth gimbal movement.</p></div>
       <div class="svc"><span class="mono">Edit</span><h3>Short-form editing</h3><p>Reels, TikToks and Shorts built on strong hooks, fast pacing, kinetic captions, color grading and sound design.</p></div>
       <div class="svc"><span class="mono">Grow</span><h3>Content strategy</h3><p>Publishing schedule, hook testing and reading retention and engagement data to improve every next video.</p></div>
     </div>
@@ -332,8 +338,8 @@ const ICON={
  film:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 9h4M3 15h4M17 9h4M17 15h4"/></svg>'
 };
 const CATS=[
+ {k:"space",name:"Real Estate & Hospitality",tag:"Real Estate",c:"#4cc3e0",icon:"space",desc:"Walkthroughs of villas, chalets, lounges and cafés that make people want to visit."},
  {k:"gym",name:"Gym & Fitness",tag:"Gym",c:"#ff5a5f",icon:"gym",desc:"Promo reels and facility tours for gyms and fitness classes."},
- {k:"space",name:"Real Estate & Hospitality",tag:"Real Estate",c:"#4cc3e0",icon:"space",desc:"Tours of villas, chalets, lounges and cafés that make people want to visit."},
  {k:"event",name:"Events",tag:"Event",c:"#f5b14c",icon:"event",desc:"Fast, energetic coverage of bootcamps, classes and live events."},
  {k:"film",name:"Cinematic Stories",tag:"Cinematic",c:"#a78bfa",icon:"film",desc:"Self-shot short stories with mood, color grading and subtle captions."}
 ];
@@ -378,6 +384,17 @@ CATS.forEach(cat=>{
   catsEl.appendChild(sec);
 });
 
+/* hero: real estate clips play in turn */
+const HERO=["v15","v16","v11","v13"],reel=document.getElementById("reel"),reelnav=document.getElementById("reelnav"),reelcap=document.getElementById("reelcap");let hi=0;
+function heroSet(n,play=true){hi=n;const c=CLIPS.find(x=>x.id===HERO[n]);reel.src=`media/${c.id}.mp4`;reel.poster=`media/${c.id}.jpg`;
+  reelcap.textContent=`${c.t}${c.v?" · "+c.v:""}`;[...reelnav.children].forEach((b,j)=>b.setAttribute("aria-pressed",j===n));if(play)reel.play().catch(()=>{})}
+HERO.forEach((id,n)=>{const c=CLIPS.find(x=>x.id===id);const b=document.createElement("button");b.type="button";b.className="chip";b.textContent={v15:"Sun Lounge",v16:"55 Café",v11:"Villa",v13:"Chalet"}[id];b.onclick=()=>heroSet(n);reelnav.appendChild(b)});
+reel.addEventListener("ended",()=>heroSet((hi+1)%HERO.length));
+const openHero=()=>{reel.pause();openLB(CLIPS.findIndex(x=>x.id===HERO[hi]))};
+document.getElementById("monitor").addEventListener("click",openHero);
+document.getElementById("monitor").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openHero()}});
+heroSet(0,false);
+
 /* lightbox */
 const lb=document.getElementById("lb"),lbV=document.getElementById("lbVideo");let cur=0,lastFocus=null;
 function visible(){const k=CLIPS[cur].cat;return CLIPS.map((c,i)=>i).filter(i=>CLIPS[i].cat===k)}
@@ -385,7 +402,7 @@ function show(i){cur=i;const c=CLIPS[i];lbV.src=`media/${c.id}.mp4`;lbV.poster=`
   const lc=document.getElementById("lbCat");lc.textContent=`${catOf(c.cat).name} · ${tc(c.s)}`;lc.style.color=catOf(c.cat).c;document.getElementById("lbTitle").textContent=c.t;
   document.getElementById("lbDesc").textContent=c.d;lbV.play().catch(()=>{})}
 function openLB(i){lastFocus=document.activeElement;lb.hidden=false;requestAnimationFrame(()=>lb.classList.add("open"));show(i);document.getElementById("lbClose").focus()}
-function closeLB(){lb.classList.remove("open");lbV.pause();setTimeout(()=>{lb.hidden=true;lbV.removeAttribute("src");lbV.load()},250);lastFocus&&lastFocus.focus()}
+function closeLB(){lb.classList.remove("open");lbV.pause();reel.play().catch(()=>{});setTimeout(()=>{lb.hidden=true;lbV.removeAttribute("src");lbV.load()},250);lastFocus&&lastFocus.focus()}
 function step(d){const v=visible();const p=v.indexOf(cur);show(v[(p+d+v.length)%v.length])}
 document.getElementById("lbClose").onclick=closeLB;
 document.getElementById("lbPrev").onclick=()=>step(-1);
